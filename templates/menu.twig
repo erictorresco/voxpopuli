@@ -1,0 +1,18 @@
+{% if menu %}
+    <ul class="flex flex-col lg:flex-row  text-white items-center justify-center lg:space-x-5 py-2 text-base bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 shadow rounded">
+        {% for item in items %}
+            <li>
+                <a class="" href="{{ item.link }}">{{ item.title }}</a>
+                {# {% if item.children %}
+                    <ul class="nav-drop">
+                        {% for child in item.children %}
+                            <li class="nav-drop-item">
+                                <a href="{{ child.link }}">{{ child.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %} #}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
