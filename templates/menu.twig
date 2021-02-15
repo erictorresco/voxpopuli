@@ -1,5 +1,5 @@
 {% if menu %}
-    <div class="lg:hidden text-white p-2 font-semibold" x-show="open" @click.away="open=false">
+    <div class="block lg:hidden text-white p-2 font-semibold" x-show="open" @click.away="open=false">
         {% for item in items %}
                 <a class="block px-2 py-1 hover:bg-gray-800 rounded" href="{{ item.link }}">{{ item.title }}</a>
                 {# {% if item.children %}
