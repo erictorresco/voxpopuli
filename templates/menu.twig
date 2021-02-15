@@ -1,18 +1,26 @@
 {% if menu %}
-    <ul class="flex flex-col lg:flex-row  text-white items-center justify-center lg:space-x-5 py-2 text-base bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 shadow rounded">
+    <div class="lg:hidden text-white p-2 font-semibold" x-show="open" @click.away="open=false">
         {% for item in items %}
-            <li>
-                <a class="" href="{{ item.link }}">{{ item.title }}</a>
+                <a class="block px-2 py-1 hover:bg-gray-800 rounded" href="{{ item.link }}">{{ item.title }}</a>
                 {# {% if item.children %}
-                    <ul class="nav-drop">
+                    <div class="">
                         {% for child in item.children %}
-                            <li class="nav-drop-item">
                                 <a href="{{ child.link }}">{{ child.title }}</a>
-                            </li>
                         {% endfor %}
-                    </ul>
+                    </div>
                 {% endif %} #}
-            </li>
         {% endfor %}
-    </ul>
+    </div>
+    <div class="hidden lg:flex space-x-4 text-white p-2 font-semibold justify-center">
+        {% for item in items %}
+                <a class="block px-2 py-1 hover:bg-gray-800 rounded" href="{{ item.link }}">{{ item.title }}</a>
+                {# {% if item.children %}
+                    <div class="">
+                        {% for child in item.children %}
+                                <a href="{{ child.link }}">{{ child.title }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %} #}
+        {% endfor %}
+    </div> 
 {% endif %}

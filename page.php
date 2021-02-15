@@ -1,7 +1,5 @@
 <?php
 
-use Timber\Timber;
-
 /**
  * The template for displaying all pages.
  *

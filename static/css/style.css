@@ -38,5 +38,9 @@ Text Domain:
   @apply font-semibold text-lg text-gray-300 hover:text-white;
 }
 
+.submenu:hover > .submenu-item {
+	display: block;
+}
+
 
 @tailwind utilities;
