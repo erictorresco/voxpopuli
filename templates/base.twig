@@ -7,26 +7,7 @@
 {% endblock %}
 
 	<body data-template="base.twig">
-		<header class="bg-gray-800" x-data="{ open: false}">
-			<div class="px-2 py-2 flex items-center justify-between lg:justify-center">
-				<div class="lg:hidden"></div>
-				<div class="flex flex-col items-center">
-					<a href="/"><img class="h-16 lg:h-20" src="{{ site.theme.link }}/static/images/logo_vox_populi.png" alt="logo Vox populi"></a>
-					<span class="text-md lg:text-xl font-mono font-semibold text-white border-b border-gray-500 pb-2">voxpopuli.digital</span>
-					
-				</div>
-				<div class="lg:hidden">
-					<button @click="open = true" type="button" class="text-gray-500 hover:text-white focus:text-white focus:outline-none">
-						<svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-						</svg>
-					</button>
-				</div>
-			</div>
-			{% block header %}									
-				{% include "menu.twig" with {'items': menu.get_items} %}
-			{% endblock %}
-		</header>
+		{% include "header.twig" with {'items': menu.get_items} %}
 				{% block content %}
 					Sorry, no content
 				{% endblock %}
