@@ -35,4 +35,6 @@ if (is_front_page()) {
 	$context['opinion'] = Timber::get_posts($opinionArgs);
 	array_unshift($templates, 'front-page.twig');
 }
+
+
 Timber::render($templates, $context);

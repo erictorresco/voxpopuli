@@ -4,6 +4,13 @@
 {% extends "index.twig" %}
 
 {% block content %}
-  <h3>This is my archive</h3>
-  {{ parent() }}
+  <section class="mt-5">
+    <div class="mx-1 lg:max-w-7xl lg:mx-auto ">
+      <div class="border-l-8 border-gray-900 mb-5 pl-2 py-3">
+        <h2 class="text-lg text-gray-500 italic">{{ parent.name}}</h2>
+        <h3 class="text-3xl text-gray-700">{{ title }}</h3>
+      </div>
+        {{ parent() }}
+    </div>  
+  </section>
 {% endblock %}
