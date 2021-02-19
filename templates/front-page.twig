@@ -3,310 +3,198 @@
 {% block content %}
 	<section class="bg-white">
 		<div class="lg:max-w-7xl mx-auto">
-			<div class="flex flex-col lg:space-x-10 mt-4 lg:flex-row">
-                {# Left Pane #}
-                <div class="">
-                    <div class="w-full">
-                        <div class="relative h-56 lg:h-80 flex flex-col justify-end">
-                            {% if latest[0].thumbnail.src %}
-                                <img
-                                class="absolute w-full h-full object-cover object-top z-0"
-                                src={{latest[0].thumbnail.src}}
-                                {% if latest[0].thumbnail.alt %}
-                                alt={{latest[0].thumbnail.alt}}
-                                {% else %}
-                                alt="{{latest[0].title}}"
-                                {% endif %}  
-                                 />
-                            {% endif %}                            
+			<div
+				class="flex flex-col lg:space-x-10 mt-4 lg:flex-row">
+				{# Left Pane #}
+				<div class="">
+					<div class="w-full">
+						<div class="h-36 lg:h-96 relative flex flex-col justify-end">
+							{% if latest[0].thumbnail.src %}
+								<img class="absolute w-full h-full object-cover object-top z-0" src="{{latest[0].thumbnail.src('large') }}" {% if latest[0].thumbnail.alt %} alt="{{latest[0].thumbnail.alt}}" {% else %} alt="{{latest[0].title}}" {% endif %}/>
+							{% endif %}
 
-                            <h3 class="absolute text-xs top-3 right-3 text-white px-3 py-1 rounded-xl border border-gray-600 bg-gray-800 opacity-75">{{latest[0].category}}</h3>
-                            
-                            <div class="bg-black bg-opacity-25 z-10 py-1">
-                                <div class="z-10 text-shadow lg:my-5 leading-5 text-center text-white">
-                                    <a class="text-2xl lg:text-3xl font-serif font-semibold" href="{{latest[0].link}}">{{latest[0].title}}</a>                                                           
-                                        <div class="flex justify-center items-center mt-1  space-x-3 text-center">
-                                            <span>{{latest[0].author.name}}</span> 
-                                            <div class="flex pl-3 space-x-2">
-                                                <a href={`https://www.facebook.com/dialog/share?app_id=482584495417352&display=popup&href=https://luciotorres.co/blog/${slug}`} target="_blank">
-                                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M23.998 12c0-6.628-5.372-12-11.999-12C5.372 0 0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853z" />
-                                                    </svg>
-                                                </a>
-                                                <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
-                                                </svg>
-                                                <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                                </svg>
-                                            </div>
-                                        </div >                                
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex space-x-2 lg:space-x-8 mt-4 lg:mt-8 justify-between mx-1">
-                        <div class="w-1/2">
-                            <div class="h-full flex flex-col bg-gray-50 justify-between">
-                                <div class="relative h-36 lg:h-48">
-                                    {% if latest[1].thumbnail.src %}
-                                        <a href="{{latest[1].link}}">
-                                            <img
-                                                class="absolute w-full h-full object-cover object-top z-0"
-                                                src={{latest[1].thumbnail.src}}
-                                                {% if latest[1].thumbnail.alt %}
-                                                alt={{latest[1].thumbnail.alt}}
-                                                {% else %}
-                                                alt="{{latest[1].title}}"
-                                                {% endif %}   
-                                                priority/>
-                                        </a>   
-                                    {% endif %}
-                                    <h3 class="absolute text-xs top-3 right-3 text-white px-3 py-1 rounded-xl border border-gray-600 bg-gray-800 opacity-75">{{latest[1].category}}</h3>
-                                </div>
-                                <div class="text-shadow p-2 text-center text-base lg:text-xl font-semibold font-serif leading-6">
-                                    <a href="{{latest[1].link}}">{{latest[1].title}}</a>                                                                                 
-                                </div>
-                                <div class="flex justify-center items-center mb-6 space-x-2 text-gray-800">
-                                    <span class="text-sm">{{latest[1].author.name}}</span> 
-                                    <div class="flex pl-2 space-x-2">
-                                        <a href={`https://www.facebook.com/dialog/share?app_id=482584495417352&display=popup&href=https://luciotorres.co/blog/${slug}`} target="_blank">
-                                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M23.998 12c0-6.628-5.372-12-11.999-12C5.372 0 0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853z" />
-                                            </svg>
-                                        </a>
-                                        <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
-                                        </svg>
-                                        <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-1/2">
-                            <div class="h-full flex flex-col bg-gray-50 justify-between">
-                                <div class="relative h-36 lg:h-48">
-                                    {% if latest[2].thumbnail.src %}
-                                        <a href="{{latest[2].link}}">
-                                            <img
-                                                class="absolute w-full h-full object-cover object-top z-0"
-                                                src={{latest[2].thumbnail.src}}
-                                                {% if latest[2].thumbnail.alt %}
-                                                alt={{latest[2].thumbnail.alt}}
-                                                {% else %}
-                                                alt="{{latest[2].title}}"
-                                                {% endif %}  
-                                                priority/>
-                                        </a>
-                                        
-                                    {% endif %}
-                                    <h3 class="absolute text-xs top-3 right-3 text-white px-3 py-1 rounded-xl border border-gray-600 bg-gray-800 opacity-75">{{latest[0].category}}</h3>
-                                </div>
-                                <div class="text-shadow p-2 text-center text-base lg:text-xl font-semibold font-serif leading-6">
-                                    <a href="{{latest[2].link}}">{{latest[2].title}}</a>                                                                                 
-                                </div>
-                                <div class="flex justify-center items-center mb-6 space-x-2 text-gray-800">
-                                    <span class="text-sm">{{latest[2].author.name}}</span> 
-                                    <div class="flex pl-2 space-x-2">
-                                        <a href={`https://www.facebook.com/dialog/share?app_id=482584495417352&display=popup&href=https://luciotorres.co/blog/${slug}`} target="_blank">
-                                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M23.998 12c0-6.628-5.372-12-11.999-12C5.372 0 0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853z" />
-                                            </svg>
-                                        </a>
-                                        <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
-                                        </svg>
-                                        <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+							<h3 class="absolute text-xs top-3 right-3 text-white px-3 py-1 rounded-xl border border-gray-600 bg-gray-800 opacity-75">{{latest[0].category}}</h3>
 
-                {# Right pane #}
-                <div class="lg:w-1/3 flex flex-col p-4 space-x-2 lg:flex-col bg-gray-800 lg:py-8 lg:px-4 ">
-                    <div class="text-white text-center">
-                        <div class="relative h-36">
-                            {% if latest[3].thumbnail.src %}
-                                <a href="{{latest[3].link}}">
-                                    <img 
-                                        class="absolute w-full h-full object-cover object-top z-0"
-                                        src={{latest[3].thumbnail.src}}
-                                        {% if latest[3].thumbnail.alt %}
-                                        alt={{latest[3].thumbnail.alt}}
-                                        {% else %}
-                                        alt="{{latest[3].title}}"
-                                        {% endif %}  
-                                        priority/>
-                                </a>
-                            {% endif %}
-                        </div>
-                        <div class="text-shadow py-4 leading-tight">
-                            <a href="{{latest[3].link}}" class=" text-2xl font-semibold font-serif">{{latest[3].title}}</a>
-                        </div>
-                        <div class="flex justify-center items-center mb-6 space-x-2 ">
-                            <span class="text-gray-400 text-sm">{{latest[3].author.name}}</span> 
-                            <div class="flex pl-2 space-x-2">
-                                <a href={`https://www.facebook.com/dialog/share?app_id=482584495417352&display=popup&href=https://luciotorres.co/blog/${slug}`} target="_blank">
-                                    <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M23.998 12c0-6.628-5.372-12-11.999-12C5.372 0 0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853z" />
-                                    </svg>
-                                </a>
-                                <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
-                                </svg>
-                                <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-white text-center">
-                        <div class="relative h-36">
-                            {% if latest[4].thumbnail.src %}
-                                 <a href="{{latest[4].link}}">
-                                    <img
-                                        class="absolute w-full h-full object-cover object-top z-0"
-                                        src={{latest[4].thumbnail.src}}
-                                        {% if latest[4].thumbnail.alt %}
-                                        alt={{latest[4].thumbnail.alt}}
-                                        {% else %}
-                                        alt="{{latest[4].title}}"
-                                        {% endif %}  
-                                        priority/>
-                                </a>
+							<div class="bg-black bg-opacity-25 z-10 py-1">
+								<div class="z-10 text-shadow lg:my-5 leading-5 text-center text-white">
+									<a class="text-2xl lg:text-3xl font-serif font-semibold" href="{{latest[0].link}}">{{latest[0].title}}</a>
+									<div class="flex justify-center items-center mt-1  space-x-3 text-center">
+										<span>{{latest[0].author.name}}</span>
+										{% include "partial/sharebox_frontpage.twig" with {'link': latest[0].link, 'title': latest[0].title} %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex space-x-2 lg:space-x-8 mt-4 lg:mt-8 justify-between mx-1">
+						<div class="w-1/2">
+							<div class="h-full flex flex-col bg-gray-50 justify-between">
+								<div class="relative h-36 lg:h-48">
+									{% if latest[1].thumbnail.src %}
+										<a href="{{latest[1].link}}">
+											<img class="absolute w-full h-full object-cover object-top z-0" src={{latest[1].thumbnail.src('medium')}} {% if latest[1].thumbnail.alt %} alt={{latest[1].thumbnail.alt}} {% else %} alt="{{latest[1].title}}" {% endif %} priority/>
+										</a>
+									{% endif %}
+									<h3 class="absolute text-xs top-3 right-3 text-white px-3 py-1 rounded-xl border border-gray-600 bg-gray-800 opacity-75">{{latest[1].category}}</h3>
+								</div>
+								<div class="text-shadow p-2 text-center text-base lg:text-xl font-semibold font-serif leading-6">
+									<a href="{{latest[1].link}}">{{latest[1].title}}</a>
+								</div>
+								<div class="flex justify-center items-center mb-6 space-x-2 text-gray-800">
+									<span class="text-sm">{{latest[1].author.name}}</span>
+									{% include "partial/sharebox_frontpage.twig" with {'link': latest[1].link, 'title': latest[1].title} %}
+								</div>
+							</div>
+						</div>
+						<div class="w-1/2">
+							<div class="h-full flex flex-col bg-gray-50 justify-between">
+								<div class="relative h-36 lg:h-48">
+									{% if latest[2].thumbnail.src %}
+										<a href="{{latest[2].link}}">
+											<img class="absolute w-full h-full object-cover object-top z-0" src={{latest[2].thumbnail.src('medium')}} {% if latest[2].thumbnail.alt %} alt={{latest[2].thumbnail.alt}} {% else %} alt="{{latest[2].title}}" {% endif %} priority/>
+										</a>
 
-                            {% endif %}
-                        </div>
-                        <div class="text-shadow py-4 leading-tight">
-                            <a href="{{latest[4].link}}" class="text-2xl font-semibold font-serif">{{latest[4].title}}</a>
-                        </div>
-                        <div class="flex justify-center items-center mb-6 space-x-2 ">
-                            <span class="text-gray-400">{{latest[4].author.name}}</span> 
-                            <div class="flex pl-6 space-x-3">
-                                <a href={`https://www.facebook.com/dialog/share?app_id=482584495417352&display=popup&href=https://luciotorres.co/blog/${slug}`} target="_blank">
-                                <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23.998 12c0-6.628-5.372-12-11.999-12C5.372 0 0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853z" />
-                                </svg>
-                            </a>
-                            <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
-                            </svg>
-                            <svg class="w-4 h-4  fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>                    
-            </div>
+									{% endif %}
+									<h3 class="absolute text-xs top-3 right-3 text-white px-3 py-1 rounded-xl border border-gray-600 bg-gray-800 opacity-75">{{latest[0].category}}</h3>
+								</div>
+								<div class="text-shadow p-2 text-center text-base lg:text-xl font-semibold font-serif leading-6">
+									<a href="{{latest[2].link}}">{{latest[2].title}}</a>
+								</div>
+								<div class="flex justify-center items-center mb-6 space-x-2 text-gray-800">
+									<span class="text-sm">{{latest[2].author.name}}</span>
+									{% include "partial/sharebox_frontpage.twig" with {'link': latest[2].link, 'title': latest[2].title} %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{# Right pane #}
+				<div class="lg:w-1/3 flex flex-col p-4 space-x-2 lg:flex-col bg-gray-800 lg:py-8 lg:px-4 ">
+					<div class="text-white text-center">
+						<div class="relative h-36">
+							{% if latest[3].thumbnail.src %}
+								<a href="{{latest[3].link}}">
+									<img class="absolute w-full h-full object-cover object-top z-0" src="{{latest[3].thumbnail.src('medium')}}" {% if latest[3].thumbnail.alt %} alt={{latest[3].thumbnail.alt}} {% else %} alt="{{latest[3].title}}" {% endif %} priority/>
+								</a>
+							{% endif %}
+						</div>
+						<div class="text-shadow py-4 leading-tight">
+							<a href="{{latest[3].link}}" class=" text-2xl font-semibold font-serif">{{latest[3].title}}</a>
+						</div>
+						<div class="flex justify-center items-center mb-6 space-x-2 ">
+							<span class="text-gray-400 text-sm">{{latest[3].author.name}}</span>
+							{% include "partial/sharebox_frontpage.twig" with {'link': latest[3].link, 'title': latest[3].title} %}
+						</div>
+					</div>
+					<div class="text-white text-center">
+						<div class="relative h-36">
+							{% if latest[4].thumbnail.src %}
+								<a href="{{latest[4].link}}">
+									<img class="absolute w-full h-full object-cover object-top z-0" src={{latest[4].thumbnail.src('medium')}} {% if latest[4].thumbnail.alt %} alt={{latest[4].thumbnail.alt}} {% else %} alt="{{latest[4].title}}" {% endif %} priority/>
+								</a>
+
+							{% endif %}
+						</div>
+						<div class="text-shadow py-4 leading-tight">
+							<a href="{{latest[4].link}}" class="text-2xl font-semibold font-serif">{{latest[4].title}}</a>
+						</div>
+						<div class="flex justify-center items-center mb-6 space-x-2 ">
+							<span class="text-gray-400">{{latest[4].author.name}}</span>
+							{% include "partial/sharebox_frontpage.twig" with {'link': latest[4].link, 'title': latest[4].title} %}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
-    <section class="max-w-7xl mx-auto">
-        <div class="container">
-            <div class="mx-1 lg:mx-0 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 mt-5 shadow rounded">
-                <h3 class="text-2xl text-center text-white  py-2 pl-4">Opinión</h3>
-            </div>
+	<section class="max-w-7xl mx-auto">
+		<div class="container">
+			<div class="mx-1 lg:mx-0 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 mt-5 shadow rounded">
+				<h3 class="text-2xl text-center text-white  py-2 pl-4">Opinión</h3>
+			</div>
+			<div class="flex flex-col space-y-5 mx-auto pt-4 lg:mx-0  lg:flex-row lg:space-x-2 lg:space-y-0">
+				{% for article in opinion %}
+					<div class="flex flex-col rounded shadow-lg border lg:w-1/3 mx-1">
+						<div class="relative h-28">
+							<img class="h-full w-full opacity-80 absolute object-cover object-center top-0" style="z-index:-1" src="{{article.thumbnail.src('medium')}}" {% if article.thumbnail.alt %} alt="{{article.thumbnail.alt}}" {% else %} alt="{{article.title}}" {% endif %}/>
+						</div>
+						<div class="flex flex-row">
+							<div class="flex flex-col items-center text-center -mt-8">
+								<div class="relative w-20 h-20 ">
+									<img class="ring-4 ring-white w-full h-full rounded-full absolute object-cover object-center " src={{ article.author.avatar.src}} alt="Autor"/>
+								</div>
+								<span class="text-sm w-32 mt-1 text-gray-600" href="{{article.link}}">{{ article.author.name}}</span>
+							</div>
+							<div class="py-1 px-4">
+								<a href="{{article.link}}">
+									<h3 class="text-xl font-serif font-semibold leading-5">{{article.title}}</h3>
+								</a>
 
-            <div class="flex flex-col space-y-5 mx-auto pt-4 lg:mx-0  lg:flex-row lg:space-x-2 lg:space-y-0">                        
-            {% for article in opinion %}
-            <div class="flex flex-col rounded shadow-lg border lg:w-1/3 mx-1">
-                <div class="relative h-28">
-                    <img
-                        class="h-full w-full opacity-80 absolute object-cover object-center top-0"
-                        style="z-index:-1" 
-                        src={{article.thumbnail.src}}
-                        {% if article.thumbnail.alt %}
-                        alt={{article.thumbnail.alt}}
-                        {% else %}
-                        alt="{{article.title}}"
-                        {% endif %}  
-                        />
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-col items-center text-center -mt-8">
-                        <div class="relative w-20 h-20 ">
-                            <img class="ring-4 ring-white w-full h-full rounded-full absolute object-cover object-center " src={{ article.author.avatar.src}} alt=""/>
-                        </div>
-                        <span class="text-sm w-32 mt-1 text-gray-600" href="{{article.link}}" >{{ article.author.name}}</span>
-                    </div>
-                    <div class="py-1 px-4">
-                        <a href="{{article.link}}">
-                            <h3 class="text-xl font-serif font-semibold leading-5">{{article.title}}</h3> 
-                        </a>
-                        
-                    </div>                             
-                </div>
-            </div>
-                            {# <div class="my-5 border w-96 hover:shadow-none relative flex flex-col shadow-lg mx-1">
-                                <img class="max-h-24 w-full opacity-80 absolute object-cover object-center top-0" style="z-index:-1" src={{article.thumbnail.src}} alt="" />
-                                <div class="profile w-full flex mt-16 ml-5 text-white">
-                                    <div class="relative w-24 h-24 ">
-                                        <img class="ring-4 ring-white w-full h-full rounded-full absolute object-cover object-center " src={{ article.author.avatar.src}} alt=""/>
-                                    </div>
-                                    <div class="text-black mt-8 ml-2  font-bold flex flex-col">
-                                        <div class="name break-words"><span>{{ article.author.name}}</span></div>
-                                        <div class="name break-words"><span>{{ article.title}}</span></div>
-                                    </div>
-                                </div>                            
-                            </div> #}
+							</div>
+						</div>
+					</div>
+					{# <div class="my-5 border w-96 hover:shadow-none relative flex flex-col shadow-lg mx-1">
+																																																																	                                <img class="max-h-24 w-full opacity-80 absolute object-cover object-center top-0" style="z-index:-1" srcset={{article.thumbnail.srcset}} alt="" />
+																																																																	                                <div class="profile w-full flex mt-16 ml-5 text-white">
+																																																																	                                    <div class="relative w-24 h-24 ">
+																																																																	                                        <img class="ring-4 ring-white w-full h-full rounded-full absolute object-cover object-center " srcset={{ article.author.avatar.srcset}} alt=""/>
+																																																																	                                    </div>
+																																																																	                                    <div class="text-black mt-8 ml-2  font-bold flex flex-col">
+																																																																	                                        <div class="name break-words"><span>{{ article.author.name}}</span></div>
+																																																																	                                        <div class="name break-words"><span>{{ article.title}}</span></div>
+																																																																	                                    </div>
+																																																																	                                </div>                            
+																																																																	                            </div> #}
 
 
-
-
-
-		                                {# <div class="rounded overflow-hidden mt-5  border shadow-lg lg:w-1/5">
-		                                    <div class="relative h-24  flex flex-col justify-between">
-												{% if article.thumbnail.src %}
-		
-													<img
-		                                            class="absolute w-full h-full object-cover object-center z-0"
-		                                            src={{article.thumbnail.src}}
-		                                            alt="Picture of the author"
-		                                            layout="fill"
-		                                            priority />
-		
-		                                        />
-												{% endif %}
-		                                        
-		
-		                                        <h3 class="absolute text-xs top-2 right-1 text-white px-3 rounded bg-gray-600 opacity-75">Análisis</h3>
-		                                        <div class="ml-5 mt-2 z-10 flex">
-		            
-		                                        </div>
-		                                        <div class="bg-black bg-opacity-25 z-10 py-2">
-		                                            <div class="z-10 text-shadow mb-2 ml-5 leading-5">
-		                                                 <a class=" text-2xl text-white  ">{{article.title}}</a>                         
-		                                            </div>
-		                                        </div>
-		                                    </div>
-		                                    <div class="flex flex-col  bg-gray-50 px-2 lg:h-52">
-		
-		                                        <div class="flex flex-col py-1 prose-sm flex-grow">
-													{{article.preview.read_more('')}}
-												</div>
-		                                        <div class="flex flex-col my-3 mx-2">
-		                                            <div class="flex items-center space-x-1">
-		                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-		                                                <h4 class="text-sm">{{article.date}}</h4>
-		                                            </div>
-		
-		                                            <div class="flex items-center space-x-1">
-		                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-		                                                <span class="text-sm">1535 vistas</span>
-		                                            </div>
-		
-		                                        </div>
-		                                    </div>
-		
-		                                </div> #}
-							{% endfor %}
-		                </div>
-		            </div>  
-    </section>
+					{# <div class="rounded overflow-hidden mt-5  border shadow-lg lg:w-1/5">
+																																																																			                                    <div class="relative h-24  flex flex-col justify-between">
+																																																																													{% if article.thumbnail.src %}
+																																																																			
+																																																																														<img
+																																																																			                                            class="absolute w-full h-full object-cover object-center z-0"
+																																																																			                                            srcset={{article.thumbnail.srcset}}
+																																																																			                                            alt="Picture of the author"
+																																																																			                                            layout="fill"
+																																																																			                                            priority />
+																																																																			
+																																																																			                                        />
+																																																																													{% endif %}
+																																																																			                                        
+																																																																			
+																																																																			                                        <h3 class="absolute text-xs top-2 right-1 text-white px-3 rounded bg-gray-600 opacity-75">Análisis</h3>
+																																																																			                                        <div class="ml-5 mt-2 z-10 flex">
+																																																																			            
+																																																																			                                        </div>
+																																																																			                                        <div class="bg-black bg-opacity-25 z-10 py-2">
+																																																																			                                            <div class="z-10 text-shadow mb-2 ml-5 leading-5">
+																																																																			                                                 <a class=" text-2xl text-white  ">{{article.title}}</a>                         
+																																																																			                                            </div>
+																																																																			                                        </div>
+																																																																			                                    </div>
+																																																																			                                    <div class="flex flex-col  bg-gray-50 px-2 lg:h-52">
+																																																																			
+																																																																			                                        <div class="flex flex-col py-1 prose-sm flex-grow">
+																																																																														{{article.preview.read_more('')}}
+																																																																													</div>
+																																																																			                                        <div class="flex flex-col my-3 mx-2">
+																																																																			                                            <div class="flex items-center space-x-1">
+																																																																			                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+																																																																			                                                <h4 class="text-sm">{{article.date}}</h4>
+																																																																			                                            </div>
+																																																																			
+																																																																			                                            <div class="flex items-center space-x-1">
+																																																																			                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+																																																																			                                                <span class="text-sm">1535 vistas</span>
+																																																																			                                            </div>
+																																																																			
+																																																																			                                        </div>
+																																																																			                                    </div>
+																																																																			
+																																																																			                                </div> #}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 {% endblock %}

@@ -33,7 +33,6 @@ Text Domain:
   @apply  w-full h-48 lg:h-96 !important;
 }
 
-
 .nav-link {
   @apply font-semibold text-lg text-gray-300 hover:text-white;
 }
