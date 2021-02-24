@@ -154,8 +154,6 @@ class StarterSite extends Timber\Site
 	}
 
 
-
-
 	/** This Would return 'foo bar!'.
 	 *
 	 * @param string $text being 'foo', then returned 'foo bar!'.

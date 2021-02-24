@@ -12,34 +12,29 @@ Text Domain:
 */
 
 @tailwind base;
-
 @tailwind components;
-
-
-.content > p, .content > h2 {
-  @apply mx-2 mt-0;
-}
-
-
-.content > figure  {
-  @apply  w-full flex flex-col justify-center items-center !important;
-}
-
-.content > figure > figcaption  {
-  @apply  text-center mx-4;
-}
-
-.content > p > iframe  {
-  @apply  w-full h-48 lg:h-96 !important;
-}
-
-.nav-link {
-  @apply font-semibold text-lg text-gray-300 hover:text-white;
-}
-
-.submenu:hover > .submenu-item {
-	display: block;
-}
-
-
 @tailwind utilities;
+
+@layer components {
+  .content > p, .content > h2 {
+    @apply mx-2 mt-0;
+  }
+
+
+  .content > figure  {
+    @apply  w-full flex flex-col justify-center items-center !important;
+  }
+
+  .content > figure > figcaption  {
+    @apply  text-center mx-4;
+  }
+
+  .content > p > iframe  {
+    @apply  w-full h-48 lg:h-96 !important;
+  }
+
+  .nav-link {
+    @apply font-semibold text-lg text-gray-300 hover:text-white;
+  }
+
+}
