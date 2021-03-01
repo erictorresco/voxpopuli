@@ -11,6 +11,7 @@
 
 $context         = Timber::context();
 $timber_post     = Timber::get_post();
+$context['sidebar'] = Timber::get_widgets('primary');
 $context['post'] = $timber_post;
 
 if ( post_password_required( $timber_post->ID ) ) {
