@@ -1,9 +1,6 @@
 {% extends "base.twig" %}
 
 {% block content %}
-<pre>
-	{{ dump() }}
-</pre>
 	<div class="max-w-7xl mx-auto mt-4 lg:flex">
 		<article class="">
 			<section class="flex flex-col justify-center items-center ">
@@ -19,9 +16,6 @@
 								</a>
 								<span>&bull;</span>
 								<time class="capitalize" datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
-								{% if views %}
-								<span>visto {{views}} veces</span>
-								{% endif %}
 							</div>
 						</div>
 					</div>
