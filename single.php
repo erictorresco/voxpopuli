@@ -14,6 +14,13 @@ $timber_post     = Timber::get_post();
 $context['sidebar'] = Timber::get_widgets('primary');
 $context['post'] = $timber_post;
 
+if (function_exists('stats_get_csv')) {
+	
+	$args = array('days'=>-1, 'limit'=>-1, 'post_id' => $timber_post->ID);
+	$result = stats_get_csv('postviews', $args);
+	$context['views'] = $result[0]['views'];
+}
+
 if ( post_password_required( $timber_post->ID ) ) {
 	Timber::render( 'single-password.twig', $context );
 } else {
