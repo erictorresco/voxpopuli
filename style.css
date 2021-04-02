@@ -1912,13 +1912,12 @@ video {
   color: #db2777;
 }
 
-.content > p, .content > h2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 0px;
+.content  p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
-.content > figure  {
+.content figure  {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -1926,21 +1925,14 @@ video {
   width: 100% !important;
 }
 
-.content > figure > figcaption  {
+.content figure > figcaption  {
   margin-left: 1rem;
   margin-right: 1rem;
   text-align: center;
 }
 
-.content > p > iframe  {
-  height: 12rem !important;
-  width: 100% !important;
-}
-
-@media (min-width: 1024px) {
-  .content > p > iframe {
-    height: 24rem !important;
-  }
+.content iframe  {
+  height: 100% !important;
 }
 
 .nav-link {

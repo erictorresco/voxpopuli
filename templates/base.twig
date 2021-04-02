@@ -1,26 +1,20 @@
 {% block html_head_container %}
 
-{% include 'html-header.twig' %}
-	{% block head %}
-	{% endblock %}
-	</head>
+	{% include 'html-header.twig' %}
+	{% block head %}{% endblock %}
+</head>{% endblock %}<body data-template="base.twig">
+{% include "header.twig" with {'items': menu.get_items} %}
+{% block content %}
+	Sorry, no content
 {% endblock %}
-
-	<body data-template="base.twig">
-		{% include "header.twig" with {'items': menu.get_items} %}
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
-		{% block footer %}
-			<footer class="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 max-w-7xl mx-auto mt-4 text-white">
-				{% include 'footer.twig' with {'items': menu.get_items}  %}
-			</footer>
-			{{ function('wp_footer') }}
-		{% endblock %}
-	</body>
-</html>
+{# {% if sidebar %}
+	<aside class="layout-sidebar">
+		{{sidebar}}
+	</aside>
+{% endif %} #}
+{% block footer %}
+	<footer class="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 max-w-7xl mx-auto mt-4 text-white">
+		{% include 'footer.twig' with {'items': menu.get_items}  %}
+	</footer>
+	{{ function('wp_footer') }}
+{% endblock %}</body></html>

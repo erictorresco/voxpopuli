@@ -16,21 +16,21 @@ Text Domain:
 @tailwind utilities;
 
 @layer components {
-  .content > p, .content > h2 {
-    @apply mx-2 mt-0;
+  .content  p {
+    @apply text-lg;
   }
 
 
-  .content > figure  {
+  .content figure  {
     @apply  w-full flex flex-col justify-center items-center !important;
   }
 
-  .content > figure > figcaption  {
+  .content figure > figcaption  {
     @apply  text-center mx-4;
   }
 
-  .content > p > iframe  {
-    @apply  w-full h-48 lg:h-96 !important;
+  .content iframe  {
+    @apply  h-full !important;
   }
 
   .nav-link {

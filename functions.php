@@ -72,7 +72,7 @@ class StarterSite extends Timber\Site
 		add_filter('timber/twig', array($this, 'add_to_twig'));
 		add_action('init', array($this, 'register_post_types'));
 		add_action('init', array($this, 'register_taxonomies'));
-		add_action( 'widgets_init', array($this, 'add_theme_widgets') );
+		add_action('widgets_init', array($this, 'add_theme_widgets'));
 		add_action('wp_enqueue_scripts', array($this, 'add_theme_scripts'));
 		parent::__construct();
 	}
@@ -96,8 +96,8 @@ class StarterSite extends Timber\Site
 		register_sidebar(
 			array(
 				'id'            => 'primary',
-				'name'          => __( 'Primary Sidebar' ),
-				'description'   => __( 'A short description of the sidebar.' ),
+				'name'          => __('Primary Sidebar'),
+				'description'   => __('A short description of the sidebar.'),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h3 class="widget-title">',
@@ -186,25 +186,25 @@ class StarterSite extends Timber\Site
 	}
 
 
-	public function get_page_views($post_id) {
+	// public function get_page_views($post_id) {
 
-		if (function_exists('stats_get_csv')) {
-		
-			$args = array(
-				'days'		=>	-1,
-				'limit'		=>	-1,
-				'post_id'	=>	$post_id
-			);
-			$result = stats_get_csv('postviews', $args);
-			$views = $result[0]['views'];
-	
-		} else {
-	
-			$views = 0;
-	
-		}
-		return number_format_i18n($views);
-	}
+	// 	if (function_exists('stats_get_csv')) {
+
+	// 		$args = array(
+	// 			'days'		=>	-1,
+	// 			'limit'		=>	-1,
+	// 			'post_id'	=>	$post_id
+	// 		);
+	// 		$result = stats_get_csv('postviews', $args);
+	// 		$views = $result[0]['views'];
+
+	// 	} else {
+
+	// 		$views = 0;
+
+	// 	}
+	// 	return number_format_i18n($views);
+	// }
 
 	/** This is where you can add your own functions to twig.
 	 *
