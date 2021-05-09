@@ -175,46 +175,9 @@ class StarterSite extends Timber\Site
 	}
 
 
-	/** This Would return 'foo bar!'.
-	 *
-	 * @param string $text being 'foo', then returned 'foo bar!'.
-	 */
-	public function myfoo($text)
-	{
-		$text .= ' bar!';
-		return $text;
-	}
-
-
-	// public function get_page_views($post_id) {
-
-	// 	if (function_exists('stats_get_csv')) {
-
-	// 		$args = array(
-	// 			'days'		=>	-1,
-	// 			'limit'		=>	-1,
-	// 			'post_id'	=>	$post_id
-	// 		);
-	// 		$result = stats_get_csv('postviews', $args);
-	// 		$views = $result[0]['views'];
-
-	// 	} else {
-
-	// 		$views = 0;
-
-	// 	}
-	// 	return number_format_i18n($views);
-	// }
-
-	/** This is where you can add your own functions to twig.
-	 *
-	 * @param string $twig get extension.
-	 */
 	public function add_to_twig($twig)
 	{
 		$twig->addExtension(new Twig\Extension\StringLoaderExtension());
-		$twig->addFilter(new Twig\TwigFilter('myfoo', array($this, 'myfoo')));
-		$twig->addFilter(new Twig\TwigFilter('views', array($this, 'get_page_views')));
 		return $twig;
 	}
 }

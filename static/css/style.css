@@ -17,11 +17,19 @@ Text Domain:
 
 @layer components {
   .content  p {
-    @apply text-lg;
+    @apply text-lg mx-2;
   }
 
+ .content  .wp-block-embed {
+   @apply items-center;
+  }
 
-  .content figure  {
+  /* .content  iframe  {
+    @apply w-full;
+  }  */
+
+ 
+  .content  figure  {
     @apply  w-full flex flex-col justify-center items-center !important;
   }
 
@@ -29,9 +37,7 @@ Text Domain:
     @apply  text-center mx-4;
   }
 
-  .content iframe  {
-    @apply  h-full !important;
-  }
+  
 
   .nav-link {
     @apply font-semibold text-lg text-gray-300 hover:text-white;
